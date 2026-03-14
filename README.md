@@ -2,7 +2,7 @@
 An AI-assisted web application designed to guide users through basic Pranayama breathing exercises. Built with a focus on simplicity and user experience.
 
 ## 🚀 Live Demo
-[यहाँ अपना Vercel या Netlify वाला लिंक पेस्ट करें]
+https://pranayama-app.vercel.app
 
 ## ✨ Features
 * **Authentication:** Basic Login/Signup functionality using `localStorage`.
