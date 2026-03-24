@@ -2,243 +2,119 @@
    REFINED GLOBAL STYLES
    ============================================= */
 :root {
-    /* Elemental Palette - Softened for 2024 Design Trends */
     --earth-glow: rgba(139, 90, 60, 0.15);
     --water-glow: rgba(8, 131, 149, 0.15);
     --fire-glow: rgba(216, 67, 21, 0.15);
     --air-glow: rgba(74, 144, 164, 0.15);
     --ether-glow: rgba(123, 31, 162, 0.15);
     
-    --glass-white: rgba(255, 255, 255, 0.6);
-    --glass-border: rgba(255, 255, 255, 0.3);
-    
+    --glass-white: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.4);
     --font-primary: 'Inter', sans-serif;
     --font-heading: 'Cormorant', serif;
 }
 
-/* Smooth Scrolling */
-html {
-    scroll-behavior: smooth;
-    background-color: #fcfcfd;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; background-color: #fcfcfd; }
+
+body { font-family: var(--font-primary); color: #2d3436; overflow-x: hidden; }
+
+.hidden { display: none !important; }
+
+/* =============================================
+   AUTHENTICATION MODAL (FIXED)
+   ============================================= */
+.auth-modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
 }
 
-body {
-    font-family: var(--font-primary);
-    color: #2d3436;
-    -webkit-font-smoothing: antialiased;
+.auth-content {
+    background: white;
+    padding: 3rem;
+    border-radius: 32px;
+    max-width: 450px; width: 90%;
+    text-align: center;
+}
+
+.auth-form input {
+    width: 100%; padding: 1rem; margin: 10px 0;
+    border: 1px solid #ddd; border-radius: 12px;
 }
 
 /* =============================================
-   MODERN FLOATING NAVIGATION
+   NAVIGATION
    ============================================= */
 .nav {
-    position: fixed;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 95%;
-    max-width: 1100px;
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(15px) saturate(180%);
+    position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+    width: 95%; max-width: 1100px;
+    background: var(--glass-white);
+    backdrop-filter: blur(15px);
     border: 1px solid var(--glass-border);
-    border-radius: 100px; /* Pill shape */
-    padding: 0.6rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    z-index: 1000;
+    border-radius: 100px; padding: 0.6rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    z-index: 1000; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .nav-link {
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: #636e72;
-    padding: 0.5rem 1.2rem;
-    border-radius: 50px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none; font-size: 0.8rem; font-weight: 700;
+    color: #636e72; padding: 0.5rem 1rem; border-radius: 50px;
 }
 
-.nav-link:hover, .nav-link.active {
-    background: #1a1a2e;
-    color: white !important;
-}
+.nav-link.active { background: #1a1a2e; color: white; }
 
 /* =============================================
-   THE BREATHING ENGINE (Visuals)
+   SECTIONS & CARDS
    ============================================= */
-.breath-circle {
-    width: 320px;
-    height: 320px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    border: 12px solid var(--glass-border);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-    transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1); /* Makes expansion smooth */
+.section { min-height: 100vh; padding: 120px 20px; display: flex; align-items: center; justify-content: center; }
+
+.pranayama-container {
+    max-width: 1200px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
 }
 
-/* Animation for the Inhale Phase */
-.breath-circle.inhale {
-    transform: scale(1.2);
-    box-shadow: 0 0 80px var(--water-glow);
-}
-
-.breath-circle.exhale {
-    transform: scale(0.9);
-}
-
-.breath-phase {
-    font-family: var(--font-primary);
-    font-size: 1.1rem;
-    font-weight: 300;
-    letter-spacing: 4px;
-    opacity: 0.8;
-}
-
-.breath-count {
-    font-size: 5rem;
-    margin-top: -10px;
-}
-
-/* =============================================
-   GLASS CARDS (Info & Timer)
-   ============================================= */
 .info-card, .timer-card {
     background: var(--glass-white);
     backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
-    border-radius: 32px; /* Super rounded corners */
-    padding: 2.5rem;
+    border-radius: 32px; padding: 2.5rem;
     box-shadow: 0 15px 35px rgba(0,0,0,0.02);
 }
 
-.info-card h3 {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
+/* =============================================
+   BREATHING CIRCLE
+   ============================================= */
+.breath-circle {
+    width: 280px; height: 280px; background: white;
+    border-radius: 50%; margin: 0 auto 2rem;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    border: 10px solid var(--glass-border);
+    transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Elemental Badges */
-.element-badge {
-    background: #fff;
-    color: #1a1a2e;
-    padding: 0.6rem 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.75rem;
-    border-radius: 50px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
+.breath-circle.inhale { transform: scale(1.2); box-shadow: 0 0 60px rgba(0,0,0,0.1); }
+.breath-circle.exhale { transform: scale(0.85); }
+
+.breath-phase { font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; }
+.breath-count { font-size: 4rem; font-family: var(--font-heading); }
 
 /* =============================================
-   BUTTONS & CONTROLS
+   ELEMENT BACKGROUNDS
    ============================================= */
+[data-element="earth"] { background: radial-gradient(at 0% 0%, #fdfbf7 0%, #f5f0e8 100%); }
+[data-element="water"] { background: radial-gradient(at 100% 0%, #f0f9ff 0%, #e0f2fe 100%); }
+[data-element="fire"] { background: radial-gradient(at 0% 100%, #fffaf5 0%, #fff3e0 100%); }
+[data-element="air"] { background: radial-gradient(at 100% 100%, #f0fdf4 0%, #dcfce7 100%); }
+[data-element="ether"] { background: radial-gradient(at 50% 50%, #faf5ff 0%, #f3e8ff 100%); }
+
 .btn-primary {
-    background: #1a1a2e;
-    color: white;
-    padding: 1rem 2.5rem;
-    border-radius: 50px;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    background: #1a1a2e; color: white; border: none;
+    padding: 1rem 2rem; border-radius: 50px; cursor: pointer;
+    font-weight: 600; transition: 0.3s;
 }
 
-.btn-primary:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 25px rgba(26, 26, 46, 0.2);
-}
-
-.btn-secondary {
-    background: transparent;
-    border: 1px solid #1a1a2e;
-    color: #1a1a2e;
-    border-radius: 50px;
-}
-
-/* =============================================
-   HERO REFINEMENT
-   ============================================= */
-.hero-title {
-    font-size: 6rem; /* Larger, more elegant */
-    font-weight: 300;
-    letter-spacing: 8px;
-}
-
-.hero-cta {
-    background: white;
-    color: #1a1a2e;
-    padding: 1.2rem 4rem;
-    border-radius: 100px;
-    font-weight: 600;
-    border: none;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-/* =============================================
-   DEVELOPER SECTION REFINEMENT
-   ============================================= */
-.developer-card {
-    background: var(--glass-white);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    border-radius: 40px;
-}
-
-.skill-tag {
-    background: white;
-    border: 1px solid rgba(0,0,0,0.05);
-    padding: 0.6rem 1.2rem;
-    font-weight: 600;
-}
-
-/* =============================================
-   ELEMENT SECTION BACKGROUNDS
-   ============================================= */
-/* Earth Section */
-[data-element="earth"] {
-    background: radial-gradient(at 0% 0%, #fdfbf7 0%, #f5f0e8 100%);
-}
-
-/* Water Section */
-[data-element="water"] {
-    background: radial-gradient(at 100% 0%, #f0f9ff 0%, #e0f2fe 100%);
-}
-
-/* Fire Section */
-[data-element="fire"] {
-    background: radial-gradient(at 0% 100%, #fffaf5 0%, #fff3e0 100%);
-}
-
-/* =============================================
-   RESPONSIVE TWEAKS
-   ============================================= */
-@media (max-width: 768px) {
-    .nav {
-        top: 10px;
-        padding: 0.5rem 1rem;
-    }
-    
-    .nav-links {
-        display: none; /* Consider a hamburger menu for mobile */
-    }
-    
-    .hero-title {
-        font-size: 3.5rem;
-    }
-    
-    .breath-circle {
-        width: 250px;
-        height: 250px;
-    }
-}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
